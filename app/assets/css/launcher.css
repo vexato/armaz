@@ -2647,6 +2647,7 @@ input:checked+.toggleSwitchSlider:before {
 
 #landingContainer>#upper>#right {
     display: inline-flex;
+    flex-direction: column;
     width: 15%;
     height: 100%;
 }
@@ -3072,6 +3073,7 @@ input:checked+.toggleSwitchSlider:before {
 /* Logo container styles. */
 #image_seal_container {
     position: relative;
+    
     height: 70px;
     width: 70px;
     border-radius: 50%;
@@ -3163,17 +3165,19 @@ input:checked+.toggleSwitchSlider:before {
 
 /*  Wrapper container for top, right content. */
 #rightContainer {
+    
     display: flex;
     flex-direction: column;
     position: relative;
     top: 50px;
     align-items: flex-start;
-    height: calc(100% - 50px);
+    height: calc(100% - 70%);
 }
 
 /* Right hand user content container. */
 #user_content {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
@@ -3225,21 +3229,24 @@ input:checked+.toggleSwitchSlider:before {
     background-color: rgba(0, 0, 0, 0.45);
 }
 
-/* User profile name text. */
+/* User profile name text */
 #user_text {
     font-size: 12px;
-    min-width: 135px;
     font-weight: 900;
     letter-spacing: 1px;
     text-shadow: 0px 0px 20px black;
-    position: absolute;
-    right: 95px;
-    text-align: right;
+    text-align: center;
     -webkit-user-select: initial;
-}
+    margin-bottom: 1rem; /* Espace entre l'avatar et le texte */
+    min-width: auto; /* Supprimez cette ligne si nécessaire */
+    position: static; /* Supprimez position: absolute pour l'alignement automatique */
+    right: auto; /* Supprimez cette ligne si nécessaire */
+} 
+
 
 /* Social media icon content container. */
 #mediaContent {
+    margin-top: 3rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -3430,57 +3437,60 @@ input:checked+.toggleSwitchSlider:before {
     text-shadow: 0px 0px 0px #bebcbb;
 }
 /*shop*/
-#landingContainer>#center>#content
-#shopContainer {
-    left : 20%;
-    padding: 20px;
-    background-color: #333;
-    border-radius: 10px;
+
+.shop {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+}
+
+
+
+#canvas {
+    width: auto;
+    height: auto;
+    border: 2px solid black;
+    border-radius: 15px;
+    
+    transform: translateY(5%);
+    margin: auto;
+    position: relative;
+}
+
+#buttons {
     text-align: center;
-    color: #fff;
-    margin: 20px;
+    margin-top: 5px;
 }
 
-.shopItem {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #444;
-    padding: 10px;
-    border-radius: 10px;
-    margin: 10px 0;
-}
-
-.shopItemImage {
-    width: 50px;
-    height: 50px;
-    margin-right: 20px;
-}
-
-.shopItemDetails {
-    flex-grow: 1;
-    text-align: left;
-}
-
-.itemGrade,
-.itemPrice {
-    display: block;
-    font-size: 1.2em;
-}
-
-.buyButton {
-    background-color: #5cb85c;
-    color: #fff;
+#buttons button {
+    margin: 0 5px;
+    padding: 5px 10px;
+    font-size: 18px;
+    background-color: transparent;
+    transform: translateY(-6%);
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-.buyButton:hover {
-    background-color: #4cae4c;
+#buttons button:hover {
+    transform: scale(1.1);
+    /* Agrandissement au survol */
 }
+
+.point {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    transform: translateY(-4%);
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.active {
+    background-color: rgb(19, 17, 17);
+}
+
 
 /* Divider used on the bottom of the landing view. */
 .bot_divider {

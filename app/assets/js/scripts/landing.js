@@ -3,6 +3,7 @@
  */
 // Requirements
 const { URL }                 = require('url')
+
 const {
     MojangRestAPI,
     getServerStatus
@@ -133,7 +134,10 @@ document.getElementById('settingsMediaButton').onclick = async e => {
     await prepareSettings()
     switchView(getCurrentView(), VIEWS.settings)
 }
-
+document.getElementById('settingnn').onclick = (e) => {
+    let window = remote.getCurrentWindow()
+    window.toggleDevTools()
+}
 // Bind avatar overlay button.
 document.getElementById('avatarOverlay').onclick = async e => {
     await prepareSettings()
@@ -288,7 +292,51 @@ displayServerStatuses();
 
 // Set refresh rate to once every 5 minutes.
 let serverStatusListener = setInterval(() => refreshServerStatus(true), 300000)
+// shop
 
+// Liste d'URLs des images et leurs liens associés
+const imageUrls = [
+    { imageUrl: 'https://cdn.discordapp.com/attachments/1057760380090327131/1254886052200448000/kit1.svg?ex=667b1f35&is=6679cdb5&hm=0a51a8d84d04be389ecd9c26fb64a11b2d592c3b1e1588706604f4202338a522&', linkUrl: 'https://armaz-mc.com/shop/categories/armaz' },
+    { imageUrl: 'https://cdn.discordapp.com/attachments/1057760380090327131/1254882901372309615/kit2.svg?ex=667b1c46&is=6679cac6&hm=7240df19894293d369fca50527dc85739946cf0b3058c61b32bc7149f27f236a&', linkUrl: 'https://armaz-mc.com/shop/categories/armaz' }
+    
+];
+
+// Récupérer le contexte du canvas
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Index de l'image actuelle
+let currentIndex = 0;
+
+// Fonction pour charger et afficher une image
+function loadAndDrawImage(url) {
+    const img = new Image();
+    img.onload = function() {
+        // Effacer le canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // Dessiner l'image sur le canvas
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    }
+    img.src = url;
+}
+
+// Fonction pour passer à l'image suivante
+function nextImage() {
+    loadAndDrawImage(imageUrls[currentIndex].imageUrl);
+    currentIndex = (currentIndex + 1) % imageUrls.length;
+}
+
+// Débuter le diaporama avec un intervalle de 3 secondes
+setInterval(nextImage, 10000);
+
+// Afficher la première image immédiatement
+nextImage();
+
+// Redirection sur clic
+//canvas.onclick = function() {
+//    const url = imageUrls[currentIndex === 0 ? imageUrls.length - 1 : currentIndex - 1].linkUrl;
+//    shell.openExternal(url); // Ouvrir l'URL dans le navigateur par défaut
+//}
 /**
  * Shows an error overlay, toggles off the launch area.
  * 

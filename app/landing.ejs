@@ -3,22 +3,15 @@
     <div id="upper">
         <div id="left">
             <div id="image_seal_container">
-                <img id="image_seal" src="assets/images/SealCircle.png" />
-                <div id="updateAvailableTooltip"><%- lang('landing.updateAvailableTooltip') %></div>
-            </div>
-        </div>
-        <div id="content">
-           
-        </div>
 
-        <div id="right">
-            <div id="rightContainer">
                 <div id="user_content">
                     <span id="user_text"><%- lang('landing.usernamePlaceholder') %></span>
                     <div id="avatarContainer">
                         <button id="avatarOverlay"><%- lang('landing.usernameEditButton') %></button>
                     </div>
+
                 </div>
+
                 <div id="mediaContent">
                     <div id="internalMedia">
                         <div class="mediaContainer" id="settingsMediaContainer">
@@ -32,7 +25,7 @@
                             </button>
                         </div>
                     </div>
-                    <div class="mediaDivider"></div>
+
                     <div id="externalMedia">
                         <div class="mediaContainer">
                             <a href="<%- lang('landing.mediaGitHubURL') %>" class="mediaURL" id="linkURL">
@@ -56,11 +49,38 @@
                                 </svg>
                             </a>
                         </div>
+                        <button id="settingnn" style="display: none">hello</button>
                     </div>
                 </div>
             </div>
+
         </div>
+
+        <div id="content">
+            <div class="shop">
+
+                <div id="container">
+                    <h5 id="boutique">boutique:</h5>
+                    <canvas id="canvas" width="150" height="100"></canvas>
+
+
+                </div>
+            </div>
+            
+        </div>
+
+
+        <div id="right">
+            <div id="rightContainer">
+                <img id="image_seal" src="assets/images/SealCircle.png" />
+                <div id="updateAvailableTooltip"><%- lang('landing.updateAvailableTooltip') %></div>
+
+            </div>
+
+        </div>
+
     </div>
+
 
     <div id="lower">
         <div id="left">
@@ -74,10 +94,10 @@
                     <div class="bot_divider"></div>
                     <div id="mojangStatusWrapper">
                         <span class="bot_label"><%- lang('landing.mojangStatus') %></span>
-                        
+
                         <div id="mojangStatusTooltip">
                             <div id="mojangStatusTooltipTitle"><%- lang('landing.mojangStatusTooltipTitle') %></div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -128,7 +148,7 @@
         </div>
     </div>
     <div id="newsContainer">
-        
+
         <div id="newsContent" article="-1" style="display: none;">
             <div id="newsStatusContainer">
                 <div id="newsStatusContent">
