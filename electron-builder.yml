@@ -1,8 +1,8 @@
 appId: 'deaddownlauncher'
-productName: 'DEAD-DOWN Launcher'
+productName: 'DEAD-DOWN LAUNCHER'
 artifactName: '${productName}-setup-${version}.${ext}'
 
-copyright: 'Copyright © 2018-2022 DEAD-DOWN'
+copyright: 'Copyright © 2018-2022 DEAD-DOWN STUDIO'
 
 asar: true
 compression: 'maximum'

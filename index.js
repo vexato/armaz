@@ -11,12 +11,16 @@ const path                              = require('path')
 const semver                            = require('semver')
 const { pathToFileURL }                 = require('url')
 const { AZURE_CLIENT_ID, MSFT_OPCODE, MSFT_REPLY_TYPE, MSFT_ERROR, SHELL_OPCODE } = require('./app/assets/js/ipcconstants')
+const LangLoader                        = require('./app/assets/js/langloader')
+
+// Setup Lang
+LangLoader.setupLanguage()
 
 // Setup auto updater.
 function initAutoUpdater(event, data) {
 
     if(data){
-        autoUpdater.allowPrerelease = false
+        autoUpdater.allowPrerelease = true
     } else {
         // Defaults to true if application version contains prerelease components (e.g. 0.12.1-alpha.1)
         // autoUpdater.allowPrerelease = true
@@ -121,7 +125,7 @@ ipcMain.on(MSFT_OPCODE.OPEN_LOGIN, (ipcEvent, ...arguments_) => {
     msftAuthViewSuccess = arguments_[0]
     msftAuthViewOnClose = arguments_[1]
     msftAuthWindow = new BrowserWindow({
-        title: 'Microsoft Login',
+        title: LangLoader.queryJS('index.microsoftLoginTitle'),
         backgroundColor: '#222222',
         width: 520,
         height: 600,
@@ -174,7 +178,7 @@ ipcMain.on(MSFT_OPCODE.OPEN_LOGOUT, (ipcEvent, uuid, isLastAccount) => {
     msftLogoutSuccess = false
     msftLogoutSuccessSent = false
     msftLogoutWindow = new BrowserWindow({
-        title: 'Microsoft Logout',
+        title: LangLoader.queryJS('index.microsoftLogoutTitle'),
         backgroundColor: '#222222',
         width: 520,
         height: 600,
@@ -235,8 +239,12 @@ function createWindow() {
         backgroundColor: '#171614'
     })
     remoteMain.enable(win.webContents)
-
-    ejse.data('bkid', Math.floor((Math.random() * fs.readdirSync(path.join(__dirname, 'app', 'assets', 'images', 'backgrounds')).length)))
+    
+    const data = {
+        bkid: Math.floor((Math.random() * fs.readdirSync(path.join(__dirname, 'app', 'assets', 'images', 'backgrounds')).length)),
+        lang: (str, placeHolders) => LangLoader.queryEJS(str, placeHolders)
+    }
+    Object.entries(data).forEach(([key, val]) => ejse.data(key, val))
 
     win.loadURL(pathToFileURL(path.join(__dirname, 'app', 'app.ejs')).toString())
 
@@ -245,7 +253,7 @@ function createWindow() {
     })*/
 
     win.removeMenu()
-
+    
     win.resizable = true
 
     win.on('closed', () => {

@@ -1,0 +1,23 @@
+# Custom Language File for Launcher Customizer
+
+[ejs.app]
+title = "DEAD-DOWN LAUNCHER"
+
+[ejs.landing]
+mediaGitHubURL = "https://armaz-mc.com"
+mediaTwitterURL = "#"
+mediaInstagramURL = "#"
+mediaYouTubeURL = "#"
+mediaDiscordURL = "https://discord.gg/s96tb8sttP"
+
+[ejs.settings]
+sourceGithubLink = "https://armaz-mc.comP"
+supportLink = "https://armaz-mc.com/support/tickets"
+
+[ejs.welcome]
+welcomeHeader = "WELCOME TO DEAD-DOWN"
+welcomeDescription = "We make cool games like DayZ, Rust, etc in Minecraft"
+welcomeDescCTA = "You are just a few clicks away from games."
+[ejs.loginOptions]
+help = "besoin d'aide"
+
